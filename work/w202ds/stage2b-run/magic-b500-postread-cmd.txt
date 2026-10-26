@@ -1,0 +1,4 @@
+# magic-b500-postread-cmd.txt — read-only post-run uboot_log capture.
+# Used only after the corrected carrier booted Android successfully.
+# It writes nothing; it reads the new 16 MB uboot_log into magic-b500-out/.
+exec_addr 0x65012f48 fdl fdl1-dl.bin 0x65000800 fdl fdl2-dl.bin 0xb4fffe00 exec read_part uboot_log 0 0x1000000 magic-b500-out/uboot_log-post.bin reset

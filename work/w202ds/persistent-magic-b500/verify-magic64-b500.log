@@ -1,0 +1,39 @@
+stock file: 0x500000
+trim file:  0x113F18
+magic file: 0x114018 (1130520 bytes)
+magic sha256: c37d0a4c63ff5d1f9ce1782838435c2c0437224ec4731deb3e5a3242909174b0
+PASS: trimmed stock image is 0x113F18 (no 5 MB partition padding)
+PASS: magic64 carrier is 0x114018
+PASS: B2 patched LK is a full 5 MB partition image
+PASS: magic64 payload at 0x210 is byte-identical to stock payload
+PASS: stock header hash equals SHA-256 of stock payload
+PASS: magic64 header hash is unchanged stock payload hash
+PASS: stock mImgSize == 0x113860
+PASS: magic64 mImgSize == stock + 0x100
+stock footer: (b'SIMGHDR\x00', 0, 0, 1128544, 512, 1112, 1129152, 0, 0, 0, 0, 0, 0)
+magic footer: (b'SIMGHDR\x00', 0, 0, 1128544, 528, 1112, 1129408, 0, 0, 0, 0, 0, 0)
+PASS: stock footer magic is SIMGHDR
+PASS: magic64 footer magic is SIMGHDR
+PASS: magic64 footer payload_size is unchanged 0x113860
+PASS: magic64 footer payload_offset is 0x210
+PASS: magic64 footer cert_size is 0x458
+PASS: magic64 footer cert_offset is 0x113BC0
+PASS: magic64 cert bytes are byte-identical to stock
+PASS: jump word at 0x200 is AArch64 B to the magic area
+PASS: AArch64 branch target is 0x113A70
+PASS: AArch64 shellcode is present at 0x113A70
+patch entry: addr=0xB50629B4 words=4 data=c10500f02000805220c808b9c0035fd6
+PASS: patch runtime address == 0xB5000000 + 0x629B4
+PASS: patch entry is 4 words (16 bytes)
+PASS: patch list terminator follows the entry
+PASS: B2^12 differs from stock payload in exactly 15 bytes
+PASS: B2^12 diff spans payload+0x629B4..0x629C3
+PASS: patch data equals the B2^12 bytes at payload+0x629B4
+PASS: on-flash magic payload is still stock at the patched offset (runtime patch only)
+PASS: B2 header hash differs (as expected; it is not used by magic64)
+PASS: B2 file bytes at 0x62BB4 equal the injected patch data
+PASS: patch data uses 28 bytes of the 128-byte magic64 area
+
+ALL 28 CHECKS PASS
+magic64 carrier: stock payload + stock hash + stock cert + one B2^12 runtime patch
+load-address 0xB5000000 is fixed by the stock SPL load call

@@ -1,0 +1,61 @@
+# Stock SPL load function 0x6500AC4C — read-only disassembly (2026-10-21)
+# Input: tools/spreadtrum_flash/backups/2026-10-17-full/splloader.bin
+# sha256: 77a4fa3d739dfd6b333ed3c81301d59397445c246cd6def8ec9d4151c217a47d
+# VA base 0x65000800; range covers the uboot loader and following entry path.
+
+
+tools/spreadtrum_flash/backups/2026-10-17-full/splloader.bin:     file format binary
+
+
+Disassembly of section .data:
+
+000000006500ac4c <.data+0xa44c>:
+    6500ac4c:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    6500ac50:	910003fd 	mov	x29, sp
+    6500ac54:	a90153f3 	stp	x19, x20, [sp, #16]
+    6500ac58:	a9025bf5 	stp	x21, x22, [sp, #32]
+    6500ac5c:	a90363f7 	stp	x23, x24, [sp, #48]
+    6500ac60:	aa0003f5 	mov	x21, x0
+    6500ac64:	2a0103f8 	mov	w24, w1
+    6500ac68:	aa0203f7 	mov	x23, x2
+    6500ac6c:	aa0303f6 	mov	x22, x3
+    6500ac70:	528000b4 	mov	w20, #0x5                   	// #5
+    6500ac74:	97ffdc01 	bl	0x65001c78
+    6500ac78:	aa0003f3 	mov	x19, x0
+    6500ac7c:	b50000a0 	cbnz	x0, 0x6500ac90
+    6500ac80:	12800000 	mov	w0, #0xffffffff            	// #-1
+    6500ac84:	1400001d 	b	0x6500acf8
+    6500ac88:	71000694 	subs	w20, w20, #0x1
+    6500ac8c:	54ffffa0 	b.eq	0x6500ac80  // b.none
+    6500ac90:	aa1303e0 	mov	x0, x19
+    6500ac94:	aa1503e1 	mov	x1, x21
+    6500ac98:	52800002 	mov	w2, #0x0                   	// #0
+    6500ac9c:	52804003 	mov	w3, #0x200                 	// #512
+    6500aca0:	aa1603e4 	mov	x4, x22
+    6500aca4:	97ffff98 	bl	0x6500ab04
+    6500aca8:	35ffff00 	cbnz	w0, 0x6500ac88
+    6500acac:	b94032d6 	ldr	w22, [x22, #48]
+    6500acb0:	1113a2d6 	add	w22, w22, #0x4e8
+    6500acb4:	6b1802df 	cmp	w22, w24
+    6500acb8:	54000069 	b.ls	0x6500acc4  // b.plast
+    6500acbc:	12800020 	mov	w0, #0xfffffffe            	// #-2
+    6500acc0:	1400000e 	b	0x6500acf8
+    6500acc4:	528000b4 	mov	w20, #0x5                   	// #5
+    6500acc8:	d2804018 	mov	x24, #0x200                 	// #512
+    6500accc:	f9400e62 	ldr	x2, [x19, #24]
+    6500acd0:	aa1303e0 	mov	x0, x19
+    6500acd4:	aa1503e1 	mov	x1, x21
+    6500acd8:	9ac20b02 	udiv	x2, x24, x2
+    6500acdc:	2a1603e3 	mov	w3, w22
+    6500ace0:	aa1703e4 	mov	x4, x23
+    6500ace4:	97ffff88 	bl	0x6500ab04
+    6500ace8:	34000080 	cbz	w0, 0x6500acf8
+    6500acec:	71000694 	subs	w20, w20, #0x1
+    6500acf0:	54fffee1 	b.ne	0x6500accc  // b.any
+    6500acf4:	12800040 	mov	w0, #0xfffffffd            	// #-3
+    6500acf8:	a94153f3 	ldp	x19, x20, [sp, #16]
+    6500acfc:	a9425bf5 	ldp	x21, x22, [sp, #32]
+    6500ad00:	a94363f7 	ldp	x23, x24, [sp, #48]
+    6500ad04:	a8c47bfd 	ldp	x29, x30, [sp], #64
+    6500ad08:	d65f03c0 	ret
+    6500ad0c:	17ffffd0 	b	0x6500ac4c

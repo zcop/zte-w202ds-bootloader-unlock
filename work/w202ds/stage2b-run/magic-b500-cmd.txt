@@ -1,0 +1,6 @@
+# magic-b500-cmd.txt — corrected magic64 carrier test (patch target 0xB50629B4).
+# Pre-read the current uboot_log, write the corrected carrier + stock SPL,
+# read both back, then reset.  After reset: DO NOT run spl-unlock.
+# Success = stock SPL verifies the stock LK payload, the magic64 shellcode
+# applies the B2^12 patch at the SPL-proven LK address, and Android boots.
+exec_addr 0x65012f48 fdl fdl1-dl.bin 0x65000800 fdl fdl2-dl.bin 0xb4fffe00 exec read_part uboot_log 0 0x1000000 magic-b500-out/uboot_log-pre.bin w uboot_b ../persistent-magic-b500/uboot_b-magic64-b500.bin w splloader ../../../tools/spreadtrum_flash/backups/2026-10-17-full/splloader.bin read_part uboot_b 0 0x114018 magic-b500-out/uboot_b-readback.bin read_part splloader 0 0x40000 magic-b500-out/splloader-readback.bin reset

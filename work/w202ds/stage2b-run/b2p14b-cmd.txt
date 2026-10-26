@@ -1,0 +1,4 @@
+# b2p14b-cmd.txt — run the patched SPL from RAM, in the fallback-download state.
+# uboot_b still holds STOCK at this point: this run tests TRANSPORT only, so a
+# success means "normal-mode SPL boots the uboot partition", nothing more.
+exec_addr 0x65012f48 fdl spl-unlock.bin 0x65000800

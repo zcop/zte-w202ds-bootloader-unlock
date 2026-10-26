@@ -1,0 +1,20 @@
+patched.bin  size: 0x500000 (5242880 bytes)
+original.bin size: 0x114018 (1130520 bytes)
+Patched file format: BTHD
+Patched  payload offset: 0x200
+Original payload offset: 0x210
+Payload size  (from original footer): 0x113860 (1128544 bytes)
+Load address:                         0xB5000000
+Extra data block: offset orig 0x113BC0 / patch 0x113AC0, size 0x458 (1112 bytes)
+Architecture: AArch64 (magic64)
+Shellcode size: 112 bytes
+Patch data at:  0x113AE0 (max 128 bytes)
+
+Patch entries:    1
+Patch data size:  28 bytes
+Available space:  128 bytes
+
+Patched file saved to: ../persistent-magic-b500/uboot_b-magic64-b500.bin (1130520 bytes)
+
+=== Patch Summary ===
+  [0] addr=0xB50629B4  len=4 words  data: 0xF00005C1 0x52800020 0xB908C820 0xD65F03C0

@@ -1,0 +1,17 @@
+# Local build products (rebuilt by the guide; not part of the snapshot)
+work/w202ds/persistent-magic/input.txt
+work/w202ds/persistent-magic/linker.lds
+work/w202ds/persistent-magic/magic.o
+work/w202ds/persistent-magic/magic.elf
+work/w202ds/persistent-magic/magic.bin
+work/w202ds/persistent-magic/patched.bin
+work/w202ds/persistent-magic/aarch64-linux-android-*
+work/w202ds/persistent-magic/arm-linux-androideabi-*
+
+# Runtime output from a flash attempt
+work/w202ds/stage2b-run/logs/
+work/w202ds/stage2b-run/magic-b500-out/
+
+# Editor / OS
+.DS_Store
+*.swp

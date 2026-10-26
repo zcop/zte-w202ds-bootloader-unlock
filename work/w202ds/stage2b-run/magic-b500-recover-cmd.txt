@@ -1,0 +1,8 @@
+# magic-b500-recover-cmd.txt — capture the failed boot's uboot_log AND restore
+# the tethered state in one BROM session.
+# 1. read the post-failure uboot_log into the new output directory
+# 2. write back the B2^12 patched LK
+# 3. read it back (gate on d2210425...)
+# 4. erase the stock SPL -> reset falls back to BROM download
+# Then run b2p14b-cmd.txt (host spl-unlock) to get Android back.
+exec_addr 0x65012f48 fdl fdl1-dl.bin 0x65000800 fdl fdl2-dl.bin 0xb4fffe00 exec read_part uboot_log 0 0x1000000 magic-b500-out/uboot_log-post.bin w uboot_b ../persistent/uboot_b-unlock.bin read_part uboot_b 0 0x500000 magic-b500-out/uboot_b-restored-readback.bin e splloader reset
